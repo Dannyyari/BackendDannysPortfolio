@@ -1,16 +1,31 @@
 import os
 from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 app = Flask(__name__)
 
-CORS(app)
 
-@app.route("/api/contact", methods=["POST"])
+CORS(app, origins=['https://danny-portfolio-devops.netlify.app'])
+
+@app.route("/api/contact", methods=["POST", "OPTIONS"])
 def contact_api():
-    data = request.get_json()
-    print("Data received:", data)
-    return jsonify({"status": "success", "message": "Contact form submitted successfully!"})
+    try:
+        data = request.get_json()
+        print("Data received:", data)
+        
+        if not data:
+            return jsonify({"status": "error", "message": "No JSON data received"}), 400
+        
+        required_fields = ["name", "email", "subject", "message"]
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"status": "error", "message": f"Missing field: {field}"}), 400
+        
+        return jsonify({"status": "success", "message": "Contact form submitted successfully!"})
+        
+    except Exception as e:
+        print("Error:", str(e))
+        return jsonify({"status": "error", "message": "Server error"}), 500
 
 #@app.route("/api/contact", methods=["POST", "OPTIONS"])
 #@cross_origin(origins=["https://danny-portfolio-devops.netlify.app"])
