@@ -6,9 +6,12 @@ app = Flask(__name__)
 
 #CORS(app, origins=["https://danny-portfolio-devops.netlify.app"], methods=["POST", "OPTIONS"], allow_headers=["Content-Type"])
 
+@app.route("/")
+def home():
+    return jsonify({"message": "Backend is running"})
 
 @app.route("/api/contact", methods=["POST", "OPTIONS"])
-@cross_origin(origins=["https://danny-portfolio-devops.netlify.app/api/contact"])
+@cross_origin(origins=["https://danny-portfolio-devops.netlify.app"])
 def contact_api():
     try:
         data = request.get_json()
