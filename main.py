@@ -9,6 +9,10 @@ CORS(app, resources={r"/*": {"origins": ["https://danny-portfolio-devops.netlify
 
 @app.route("/api/contact", methods=["POST", "OPTIONS"])
 def contact_api():
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+
+
     try:
         data = request.get_json()
         print("Data received:", data)
