@@ -49,7 +49,7 @@ def contact_api():
     #    return jsonify({"status": "error", "message": "Server error"}), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))  # Railway tilldelar port via miljövariabel
+    port = int(os.environ.get("PORT", 5000))  # Railway tilldelar port via miljövariabel
     app.run(host="0.0.0.0", port=port)
 
 
