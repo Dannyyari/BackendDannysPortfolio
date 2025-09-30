@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 
-CORS(app, resources={r"/api/*": {"origins": "https://dinfrontend.railway.app"}})
+CORS(app, resources={r"/*": {"origins": ["https://dannysportfolio.railway.app"]}})
 
 @app.route("/api/contact", methods=["POST", "OPTIONS"])
 def contact_api():
