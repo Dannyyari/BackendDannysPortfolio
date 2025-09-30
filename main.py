@@ -4,10 +4,9 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
-CORS(app)
+CORS(app, origins="https://danny-portfolio-devops.netlify.app")
 
 @app.route("/api/contact", methods=["POST"])
-@cross_origin(origins="https://danny-portfolio-devops.netlify.app")
 def contact_api():
     data = request.get_json()
     print ("Data received:", data["name"], data["email"], data["subject"], data["message"])
