@@ -21,21 +21,21 @@ def test_contact_api(client):
     assert "message" in json_data
 
 def clearNameWhenRecived(text):
-    if text is none or text.isEmpty:
+    if text is None or text.isEmpty:
         return "empty message"
     return text
 
 def clearEmailWhenRecived(text):
-    if text is none or text.isEmpty:
+    if text is None or text.isEmpty:
         return "empty message"
     return text
 
 def clearSubjectWhenRecived(text):
-    if text is none or text.isEmpty:
+    if text is None or text.isEmpty:
         return "empty message"
     return text
 
 def clearMessageWhenRecived(text):
-    if text is none or text.isEmpty:
+    if text is None or text.isEmpty:
         return "empty message"
     return text
