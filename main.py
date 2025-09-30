@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.route("/api/contact", methods=["POST", "OPTIONS"])
-@cross_origin(origins=["https://danny-portfolio-devops.netlify.app"])
+@cross_origin(origins=["https://danny-portfolio-devops.netlify.app/api/contact"])
 def contact_api():
     try:
         data = request.get_json()
