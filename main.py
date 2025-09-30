@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
-CORS(app, origins="https://danny-portfolio-devops.netlify.app", allow_headers=["Content-Type"])
+CORSapp, origins=["https://danny-portfolio-devops.netlify.app"], methods=["GET", "POST", "OPTIONS"], allow_headers=["Content-Type"]
 
 @app.route("/api/contact", methods=["POST"])
 def contact_api():
