@@ -9,7 +9,7 @@ CORSapp, origins=["https://danny-portfolio-devops.netlify.app"], methods=["GET",
 @app.route("/api/contact", methods=["POST"])
 def contact_api():
     data = request.get_json()
-    print ("Data received:", data["name"], data["email"], data["subject"], data["message"])
+    print ("Data received:", data, data["name"], data["email"], data["subject"], data["message"])
     return jsonify({"status": "success", "message": "Contact form submitted successfully!"})
 
 
