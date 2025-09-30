@@ -7,9 +7,12 @@ app = Flask(__name__)
 
 CORS(app, origins=["https://danny-portfolio-devops.netlify.app"], supports_credentials=True)
 
-@app.route("/api/contact", methods=["POST"])
+@app.route("/api/contact", methods=["POST", "OPTIONS"])
 def contact_api():
+    if request.method == "OPTIONS":
+        return '', 200
     try:
+    
         data = request.get_json()
         print("Data received:", data)
         
