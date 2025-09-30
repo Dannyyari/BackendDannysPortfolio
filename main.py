@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 
-CORS(app, resources={r"/*": {"origins": ["https://dannysportfolio.railway.app"]}})
+CORS(app, resources={r"/*": {"origins": ["https://danny-portfolio-devops.netlify.app"]}})
 
 @app.route("/api/contact", methods=["POST", "OPTIONS"])
 def contact_api():
@@ -20,7 +20,6 @@ def contact_api():
         for field in required_fields:
             if field not in data:
                 return jsonify({"status": "error", "message": f"Missing field: {field}"}), 400
-        
         return jsonify({"status": "success", "message": "Contact form submitted successfully!"})
         
     except Exception as e:
