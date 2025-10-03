@@ -16,7 +16,7 @@ def contact_api():
 
     data = request.get_json()
 
-    print("Data received:", data ["name"], data["email"], data ["subject"], data ["message"])
+    print("Data received FIRSTMETHOD:", data.get("name"), data.get("email"), data.get("subject"), data.get("message") )
     
     name = data.get("name")
     email = data.get("email")
