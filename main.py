@@ -18,13 +18,16 @@ def contact_api():
 
     print("Data received:", data ["name"], data["email"], data ["subject"], data ["message"])
     
-    name = data.get("name", "N/A")
-    email = data.get("email", "N/A")
-    subject = data.get("subject", "N/A")
-    message = data.get("message", "N/A")
+    name = data.get("name")
+    email = data.get("email")
+    subject = data.get("subject")
+    message = data.get("message")
 
     print(f"Data received: {name}, {email}, {subject}, {message}", flush=True)
     app.logger.info(f"Data received: {name}, {email}, {subject}, {message}")
+
+    app.logger.info(f"Data received: {data}")
+
     return jsonify({"status": "success", "message": "Contact form submitted successfully!"}), 200
 
 if __name__ == "__main__":
