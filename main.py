@@ -26,7 +26,7 @@ def contact_api():
     print(f"Data received: {name}, {email}, {subject}, {message}", flush=True)
     app.logger.info(f"Data received: {name}, {email}, {subject}, {message}")
 
-    app.logger.info(f"Data received: {data}")
+    app.logger.info(f"Data receivedALLDATA: {data}")
 
     return jsonify({"status": "success", "message": "Contact form submitted successfully!"}), 200
 
