@@ -15,7 +15,10 @@ def contact_api():
 
     data = request.get_json()
     print("Data received:", data ["name"], data["email"], data ["subject"], data ["message"])
-    app.logger.info("Data received: %s", data)
+     # Use app.logger instead of print - this works better on Render
+    app.logger.info(f"Contact form received - Name: {data.get('name')}, Email: {data.get('email')}")
+    app.logger.info(f"Subject: {data.get('subject')}")
+    app.logger.info(f"Message: {data.get('message')}")
     return jsonify({"status": "success", "message": "Contact form submitted successfully!"}), 200
 
 if __name__ == "__main__":
