@@ -1,4 +1,5 @@
 import os
+import sys
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -14,11 +15,16 @@ def contact_api():
         return '', 200
 
     data = request.get_json()
+
     print("Data received:", data ["name"], data["email"], data ["subject"], data ["message"])
-     # Use app.logger instead of print - this works better on Render
-    app.logger.info(f"Contact form received - Name: {data.get('name')}, Email: {data.get('email')}")
-    app.logger.info(f"Subject: {data.get('subject')}")
-    app.logger.info(f"Message: {data.get('message')}")
+    
+    name = data.get("name", "N/A")
+    email = data.get("email", "N/A")
+    subject = data.get("subject", "N/A")
+    message = data.get("message", "N/A")
+
+    print(f"Data received: {name}, {email}, {subject}, {message}", flush=True)
+    app.logger.info(f"Data received: {name}, {email}, {subject}, {message}")
     return jsonify({"status": "success", "message": "Contact form submitted successfully!"}), 200
 
 if __name__ == "__main__":
