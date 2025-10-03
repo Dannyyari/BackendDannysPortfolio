@@ -10,14 +10,14 @@ CORS(app)
 @app.route("/api/contact", methods=["POST", "OPTIONS"])
 def contact_api():
 
-    if request.method == "OPTIONS":  # Preflight request från frontend
+    if request.method == "OPTIONS":
         return '', 200
 
     data = request.get_json()
     print("Data received:", data ["name"], data["email"], data ["subject"], data ["message"])
-
+    app.logger.info("Data received: %s", data)
     return jsonify({"status": "success", "message": "Contact form submitted successfully!"}), 200
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Railway tilldelar port via miljövariabel
+    port = int(os.environ.get("PORT", 5000)) 
     app.run(host="0.0.0.0", port=port)
